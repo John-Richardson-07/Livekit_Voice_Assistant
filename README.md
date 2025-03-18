@@ -1,7 +1,7 @@
 # LiveKit Voice Assistant
 
 ## 📌 Overview
-This project is a voice assistant built using **LiveKit**, **Flask**, and **ngrok** for real-time voice processing. It enables voice interaction through LiveKit's **Voice Pipeline Agent**, processes audio with a Flask backend, and ensures response validation within a 60-second limit.
+This project implements a voice assistant using LiveKit's Voice Pipeline Agent. It consists of a Flask backend for processing audio and a React-based frontend UI for voice interaction.
 
 ---
 
@@ -10,7 +10,7 @@ This project is a voice assistant built using **LiveKit**, **Flask**, and **ngro
 ✅ **Flask Backend** - Handles requests, validates audio, and trims responses.  
 ✅ **ngrok for Tunneling** - Exposes the local server for public access.  
 ✅ **Error Handling** - Prevents invalid or excessively long audio responses.  
-✅ **Simple Setup** - Easy-to-follow steps for running the assistant.  
+✅ Voice UI: A web interface to interact with the assistant.  
 
 ---
 
@@ -24,9 +24,27 @@ cd LiveKit-Voice-Assistant
 
 ### 🔹 2. Install Dependencies
 Ensure you have Python 3.8+ installed, then run:
+#### **For Backend (Flask)**
 ```sh
 pip install -r requirements.txt
 ```
+
+
+#### **For Frontend (React)**
+```sh
+npx create-react-app livekit-voice-ui
+cd livekit-voice-ui
+npm install axios
+```
+
+## **📌 Expose the Flask Backend Using Ngrok**
+Run the following command:
+```sh
+ngrok http 5000
+```
+Copy the public URL and replace `"https://your-ngrok-url.ngrok-free.app"` in `VoiceUI.js`.
+
+---
 
 ### 🔹 3. Configure Environment Variables
 Create a `.env` file in the project root and add your LiveKit credentials:
@@ -57,7 +75,11 @@ Copy the **ngrok public URL** and update `FLASK_SERVER_URL` in `.env`.
 ```sh
 python agent.py start
 ```
-
+## **📌 Run the Frontend**
+Go to the `livekit-voice-ui` folder and start the app:
+```sh
+npm start
+```
 ---
 
 ## 📌 Usage Guide
@@ -85,16 +107,5 @@ python agent.py start
 
 ---
 
-## 📌 Contributing
-Feel free to fork the repo and submit pull requests!
-
----
-
-## 📌 License
-This project is open-source under the MIT License.
-
----
-
-🚀 **Happy Coding!**
 
 
